@@ -1,0 +1,16 @@
+ <?php 
+        include('db.php');
+        $result = mysqli_query($conn, "SELECT * FROM products_list");
+        $productarray=array();
+
+        while($row = mysqli_fetch_assoc($result)){
+            $productarray[]=$row;
+            
+            
+            
+            echo json_encode($productarray); 
+            $fp = fopen('data.json', 'w');
+            fwrite($fp, json_encode($productarray));
+            fclose($fp);
+            ?>
+         ?>
