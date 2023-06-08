@@ -25,7 +25,7 @@
             <?php 
             //include('dball.php');
 
-            //$result = mysqli_query($conn, "SELECT * FROM healthafe.products_list");
+            //$result = mysqli_query($conn, "SELECT * FROM products_list");
             $sumtotal = 0;
             $total = 0;
            
