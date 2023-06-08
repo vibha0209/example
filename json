@@ -14,3 +14,55 @@
             fclose($fp);
             ?>
          ?>
+==================================================================================================================================================
+  <div class="section full m-1">
+            <div class="section-title medium">All PRODUCT</div>
+        </div>
+<!-- //-----------------------Show list fron outlet  ------------------- -->
+
+        <div class="wide-block pt-2 pb-2">
+            <div class="row">
+            <?php 
+            //include('dball.php');
+
+            //$result = mysqli_query($conn, "SELECT * FROM healthafe.products_list");
+            $sumtotal = 0;
+            $total = 0;
+           
+            //$productarray=array();
+
+            $data = file_get_contents("productdata.json");
+			$products = json_decode($data, true);
+			if(count($products) != 0){
+				foreach ($products as $product) {
+                    //$productarray[]=$row;
+                       // if($row > 0) {
+             ?>
+                <div class="col-sm-6 col-md-3 col-lg-2 mb-2">
+                    <div class="card product-card">
+                    <form action="" method="POST">
+                        <a class="card-body">
+                        <a href="" data-toggle="modal" data-target="#ModalBasic"><img src="assets/img/category/roti.jpg" class="image" alt="product image" ></a>
+                        <h2 class="title text-center pb-1"><?php echo $product['name']; ?></h2>
+                        <h2 class="title text-center pb-1"><?php echo $product['rate']; ?> / <?php echo $product['unit']; ?> </h2>
+                        <a onclick="itemadd(<?php echo $row['itemid']; ?>,<?php echo $row['u_id']; ?>);" class="btn btn-sm btn-primary btn-block" >ADD TO CART</a>
+                    </form>
+                    </div>
+                </div>
+    
+            <?php 
+                } 
+
+            //$fp = fopen('productdata.json', 'w');
+            //fwrite($fp, json_encode($productarray));
+             // Close json file
+            //fclose($fp);
+           
+           } //}
+          // echo json_encode($productarray); 
+           //print("File created successfully.");
+             
+            ?>
+            </div></div>
+        </div>
+
