@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+
+    <title>How to convert div into image using JQuery</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+</head>
+
+<body>
+
+    <form id="form1" runat="server">
+
+        <div id="html-content-holder1" style="width: 350px;">
+
+            <h3>How to convert div into image using JQuery</h3>
+
+            <p>In this article, we learn how to preview html div into image ,
+
+                for this we need to import two JavaScript file 
+
+                html2canvas.js and jquery.min.js </p>
+
+            <img src="biimg/img1 (2).jpg" />
+
+        </div>
+
+    </form>
+
+    <a id="btn-Preview-Image" href="#">Preview</a>
+
+    <a id="btn-Convert-Html2Image" href="#">Download</a>
+
+    <br />
+
+    <h3> Preview : </h3>
+
+    <div id="previewImage">
+
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var element = $("#html-content-holder1");
+
+            var getCanvas;
+
+            $("#btn-Preview-Image").on('click', function () {
+
+                html2canvas(element, {
+
+                    onrendered: function (canvas) {
+
+                        $("#previewImage").append(canvas);
+
+                        getCanvas = canvas;
+
+                    }
+
+                });
+
+            });
+
+            $("#btn-Convert-Html2Image").on('click', function () {
+
+                var imgageData = getCanvas.toDataURL("image/png");
+
+                var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+
+                $("#btn-Convert-Html2Image").attr("download", "convertedimage.png").attr("href", newData);
+
+            });
+
+});
+
+</script>
+
+</body>
+
+</html>
+
