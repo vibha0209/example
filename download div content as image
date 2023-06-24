@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download DIV Content as Image</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function downloadImage() {
+            html2canvas(document.getElementById('myDiv')).then(function(canvas) {
+                var a = document.createElement('a');
+                a.href = canvas.toDataURL('image/png');
+                a.download = 'my_div_image.png';
+                a.click();
+            });
+        }
+    </script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div id="myDiv" style="width: 400px; height: 200px; background-color: yellow;">
+        <h2>Example DIV Content</h2>
+        <p>This is an example of a div that will be downloaded as an image.</p>
+    </div>
+    <button onclick="downloadImage()">Download as Image</button>
+</body>
+</html>
